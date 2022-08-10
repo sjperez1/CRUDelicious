@@ -1,0 +1,45 @@
+@using CRUDelicious.Models;
+@model Dish;
+
+<div class="container w-75 mx-auto">
+    <a href="/">Home</a>
+    <h1 class="mb-4">Edit @Model.Name</h1>
+    @* asp-route- after that dash has to come the name of the ID that is in curly braces in the post route in the controller *@
+    <form asp-action="EditDishSubmit" asp-controller="Dish" asp-route-DishId="@Model.DishId" method="post">
+        <span asp-validation-for="Chef"></span>
+        <div class="formline mb-3">
+            <label asp-for="Chef"></label>
+            <input class="form-control-sm" asp-for="Chef" value="@Model.Chef">
+        </div>
+        <span asp-validation-for="Name"></span>
+        <div class="formline mb-3">
+            <label asp-for="Name"></label>
+            <input class="form-control-sm" asp-for="Name" value="@Model.Name">
+        </div>
+        <span asp-validation-for="Calories"></span>
+        <div class="formline mb-3">
+            <label asp-for="Calories"></label>
+            <input class="form-control-sm" asp-for="Calories" value="@Model.Calories">
+        </div>
+        <span asp-validation-for="Tastiness"></span>
+        <div class="formline mb-3">
+            <label asp-for="Tastiness"></label>
+            <select asp-for="Tastiness" class="form-control-sm" value="@Model.Tastiness">
+                <option hidden disabled selected></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <span asp-validation-for="Description"></span>
+        <div>
+            <label asp-for="Description"></label>
+            <div>
+                <textarea asp-for="Description" cols="45" rows="8" value="@Model.Description"></textarea>
+            </div>
+        </div>
+        <button class="btn btn-outline-dark" type="submit">Edit Dish</button>
+    </form>
+</div>
